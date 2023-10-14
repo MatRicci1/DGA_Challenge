@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>multi_robot</name>
+  <version>0.0.1</version>
+  <description>The multi_robot package</description>
+
+  <maintainer email="ius@enstafr.onmicrosoft.com">u2is</maintainer>
+
+  <license>NONE</license>
+
+ <url type="website">http://git-u2is.ensta.fr/u2is/multi-robot</url> 
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>rospy</build_depend>
+  <build_export_depend>rospy</build_export_depend>
+  <exec_depend>rospy</exec_depend>
+  <exec_depend>hector_quadrotor_gazebo</exec_depend>
+  <exec_depend>summit_xl_gazebo</exec_depend>
+</package>

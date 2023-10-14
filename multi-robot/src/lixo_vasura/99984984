@@ -1,0 +1,75 @@
+	<group ns="drone6">
+		<include file="$(find hector_quadrotor_gazebo)/launch/spawn_quadrotor.launch">
+			<arg name="model" value="$(find hector_quadrotor_description)/urdf/quadrotor_hokuyo_utm30lx.gazebo.xacro"/>
+			<arg name="controllers" value="
+        	controller/attitude
+        	controller/velocity
+        	controller/position
+        	"/>
+			<arg name="name" value="drone6" />
+            <arg name="tf_prefix" value="drone6" />
+			<arg name="x" value="-32.0" />
+			<arg name="y" value="-34.0" />
+		</include>
+	</group>
+
+	<group ns="drone7">
+		<include file="$(find hector_quadrotor_gazebo)/launch/spawn_quadrotor.launch">
+			<arg name="model" value="$(find hector_quadrotor_description)/urdf/quadrotor_hokuyo_utm30lx.gazebo.xacro"/>
+			<arg name="controllers" value="
+        	controller/attitude
+        	controller/velocity
+        	controller/position
+        	"/>
+			<arg name="name" value="drone7" />
+            <arg name="tf_prefix" value="drone7" />
+			<arg name="x" value="-31.0" />
+			<arg name="y" value="-34.0" />
+		</include>
+	</group>
+
+	<group ns="drone8">
+		<include file="$(find hector_quadrotor_gazebo)/launch/spawn_quadrotor.launch">
+			<arg name="model" value="$(find hector_quadrotor_description)/urdf/quadrotor_hokuyo_utm30lx.gazebo.xacro"/>
+			<arg name="controllers" value="
+        	controller/attitude
+        	controller/velocity
+        	controller/position
+        	"/>
+			<arg name="name" value="drone8" />
+            <arg name="tf_prefix" value="drone8" />
+			<arg name="x" value="-30.0" />
+			<arg name="y" value="-34.0" />
+		</include>
+	</group>
+
+	<group ns="drone9">
+		<include file="$(find hector_quadrotor_gazebo)/launch/spawn_quadrotor.launch">
+			<arg name="model" value="$(find hector_quadrotor_description)/urdf/quadrotor_hokuyo_utm30lx.gazebo.xacro"/>
+			<arg name="controllers" value="
+        	controller/attitude
+        	controller/velocity
+        	controller/position
+        	"/>
+			<arg name="name" value="drone9" />
+            <arg name="tf_prefix" value="drone9" />
+			<arg name="x" value="-29.0" />
+			<arg name="y" value="-34.0" />
+		</include>
+	</group>
+
+
+ 	<group ns="drone10">
+		<include file="$(find hector_quadrotor_gazebo)/launch/spawn_quadrotor.launch">
+			<arg name="model" value="$(find hector_quadrotor_description)/urdf/quadrotor_hokuyo_utm30lx.gazebo.xacro"/>
+			<arg name="controllers" value="
+        	controller/attitude
+        	controller/velocity
+        	controller/position
+        	"/>
+			<arg name="name" value="drone10" />
+			<arg name="tf_prefix" value="drone10" />
+			<arg name="x" value="-28.0" />
+			<arg name="y" value="-34.0" />
+		</include>
+	</group>

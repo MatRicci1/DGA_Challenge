@@ -1,0 +1,164 @@
+<launch>
+
+<!-- World -->
+  <arg name="world_name" default="worlds/mars.world"/>
+
+	<include file="$(find gazebo_ros)/launch/empty_world.launch">
+		<arg name="world_name" value="$(find multi_robot)/$(arg world_name)"/> 
+		<arg name="paused" value="false"/>
+		<arg name="use_sim_time" value="true"/>
+		<arg name="gui" value="true"/>
+		<arg name="headless" value="false"/>
+		<arg name="debug" value="false"/>
+		<arg name="verbose" value="true" />
+	</include>
+
+<!-- drone1 -->
+	<group ns="drone1">
+		<include file="$(find hector_quadrotor_gazebo)/launch/spawn_quadrotor.launch">
+			<arg name="name" value="drone1" />
+			<arg name="tf_prefix" value="drone1" />
+			<arg name="y" value="-1.0" />
+		</include>
+	</group>
+
+<!-- drone2 -->
+	<group ns="drone2">
+		<include file="$(find hector_quadrotor_gazebo)/launch/spawn_quadrotor.launch">
+			<arg name="name" value="drone2" />
+			<arg name="tf_prefix" value="drone2" />
+			<arg name="y" value="2.0" />
+		</include>
+	</group>
+
+<!-- drone3 -->
+	<group ns="drone3">
+		<include file="$(find hector_quadrotor_gazebo)/launch/spawn_quadrotor.launch">
+			<arg name="name" value="drone3" />
+			<arg name="tf_prefix" value="drone3" />
+			<arg name="y" value="5.0" />
+		</include>
+	</group>
+
+<!-- drone4 -->
+	<group ns="drone4">
+		<include file="$(find hector_quadrotor_gazebo)/launch/spawn_quadrotor.launch">
+			<arg name="name" value="drone4" />
+			<arg name="tf_prefix" value="drone4" />
+			<arg name="x" value="2.0" />
+		</include>
+	</group>
+
+<!--UGV ROBOTNIK --> 
+
+	<!--launch_navigation and launch_navigation_nomap args are exclusive
+	and they are (or not) launched for all robots-->
+	<arg name="launch_rviz" default="true"/>
+	<arg name="launch_robot_a" default="true"/>
+	<arg name="launch_robot_b" default="true"/>
+	<arg name="launch_robot_c" default="true"/>
+	<arg name="debug" default="false"/>
+	<arg name="omni_drive" default="false"/>
+	<arg name="ros_planar_move_plugin" default="false"/>
+	<arg name="launch_advanced_simulation" default="false"/>
+	<arg name="use_gpu_for_simulation" default="true"/>
+
+	<!--params of the different robots-->
+	<!-- robot a -->
+	<arg name="id_robot_a" default="robot"/>
+	<arg name="x_init_pose_robot_a" default="0" />
+	<arg name="y_init_pose_robot_a" default="0" />
+	<arg name="z_init_pose_robot_a" default="0" />
+	<arg name="localization_robot_a" default="false"/>
+	<arg name="gmapping_robot_a" default="false"/>
+	<arg name="move_base_robot_a" default="false"/>
+	<arg name="amcl_and_mapserver_a" default="false"/>
+	<arg name="map_file_a" default="willow_garage/willow_garage.yaml"/>
+	<arg name="xacro_robot_a" default="summit_xl_std.urdf.xacro"/>
+	<arg name="launch_pad_a" default="false"/>
+
+	<!-- robot b -->
+	<arg name="id_robot_b" default="robot_b"/>
+	<arg name="x_init_pose_robot_b" default="0" />
+	<arg name="y_init_pose_robot_b" default="1" />
+	<arg name="z_init_pose_robot_b" default="0" />
+	<arg name="localization_robot_b" default="false"/>
+	<arg name="gmapping_robot_b" default="false"/>
+	<arg name="move_base_robot_b" default="false"/>
+	<arg name="amcl_and_mapserver_b" default="false"/>
+	<arg name="map_file_b" default="willow_garage/willow_garage.yaml"/>
+	<arg name="xacro_robot_b" default="summit_xl_std.urdf.xacro"/>
+	<arg name="launch_pad_b" default="false"/>
+
+	<!-- robot c -->
+	<arg name="id_robot_c" default="robot_c"/>
+	<arg name="x_init_pose_robot_c" default="0" />
+	<arg name="y_init_pose_robot_c" default="2" />
+	<arg name="z_init_pose_robot_c" default="0" />
+	<arg name="localization_robot_c" default="false"/>
+	<arg name="gmapping_robot_c" default="false"/>
+	<arg name="move_base_robot_c" default="false"/>
+	<arg name="amcl_and_mapserver_c" default="false"/>
+	<arg name="map_file_c" default="willow_garage/willow_garage.yaml"/>
+	<arg name="xacro_robot_c" default="summit_xl_std.urdf.xacro"/>
+	<arg name="launch_pad_c" default="false"/>
+
+
+	<!--BEGIN ROBOT 1-->
+	<include if="$(arg launch_robot_a)" file="$(find summit_xl_gazebo)/launch/summit_xl_one_robot.launch">
+		<arg name="id_robot" value="$(arg id_robot_a)"/>
+		<arg name="x_init_pose" value="$(arg x_init_pose_robot_a)"/>
+		<arg name="y_init_pose" value="$(arg y_init_pose_robot_a)"/>
+		<arg name="z_init_pose" value="$(arg z_init_pose_robot_a)"/>
+		<arg name="xacro_robot" value="$(arg xacro_robot_a)"/>
+		<arg name="launch_robot_localization" value="$(arg localization_robot_a)"/>
+		<arg name="launch_amcl_and_mapserver" value="$(arg amcl_and_mapserver_a)"/>
+		<arg name="launch_gmapping" value="$(arg gmapping_robot_a)"/>
+		<arg name="map_file" value="$(arg map_file_a)"/>
+ 		<arg name="launch_move_base" value="$(arg move_base_robot_a)"/>
+		<arg name="omni_drive" value="$(arg omni_drive)"/>
+		<arg name="ros_planar_move_plugin" value="$(arg ros_planar_move_plugin)"/>
+		<arg name="launch_pad" value="$(arg launch_pad_a)"/>
+		<arg name="launch_advanced_simulation" value="$(arg launch_advanced_simulation)"/>
+		<arg name="use_gpu_for_simulation" value="$(arg use_gpu_for_simulation)"/>
+	</include>
+
+	<!--BEGIN ROBOT 2-->
+	<include if="$(arg launch_robot_b)" file="$(find summit_xl_gazebo)/launch/summit_xl_one_robot.launch">
+		<arg name="id_robot" value="$(arg id_robot_b)"/>
+		<arg name="x_init_pose" value="$(arg x_init_pose_robot_b)"/>
+		<arg name="y_init_pose" value="$(arg y_init_pose_robot_b)"/>
+		<arg name="z_init_pose" value="$(arg z_init_pose_robot_b)"/>
+		<arg name="xacro_robot" value="$(arg xacro_robot_b)"/>
+		<arg name="launch_robot_localization" value="$(arg localization_robot_b)"/>
+		<arg name="launch_amcl_and_mapserver" value="$(arg amcl_and_mapserver_b)"/>
+		<arg name="launch_gmapping" value="$(arg gmapping_robot_b)"/>
+		<arg name="map_file" value="$(arg map_file_b)"/>
+ 		<arg name="launch_move_base" value="$(arg move_base_robot_b)"/>
+		<arg name="omni_drive" value="$(arg omni_drive)"/>
+		<arg name="ros_planar_move_plugin" value="$(arg ros_planar_move_plugin)"/>
+		<arg name="launch_pad" value="$(arg launch_pad_b)"/>
+    <arg name="launch_advanced_simulation" value="$(arg launch_advanced_simulation)"/>
+    <arg name="use_gpu_for_simulation" value="$(arg use_gpu_for_simulation)"/>
+	</include>
+
+	<!--BEGIN ROBOT 3-->
+	<include if="$(arg launch_robot_c)" file="$(find summit_xl_gazebo)/launch/summit_xl_one_robot.launch">
+		<arg name="id_robot" value="$(arg id_robot_c)"/>
+		<arg name="x_init_pose" value="$(arg x_init_pose_robot_c)"/>
+		<arg name="y_init_pose" value="$(arg y_init_pose_robot_c)"/>
+		<arg name="z_init_pose" value="$(arg z_init_pose_robot_c)"/>
+		<arg name="xacro_robot" value="$(arg xacro_robot_c)"/>
+		<arg name="launch_robot_localization" value="$(arg localization_robot_c)"/>
+		<arg name="launch_amcl_and_mapserver" value="$(arg amcl_and_mapserver_c)"/>
+		<arg name="launch_gmapping" value="$(arg gmapping_robot_c)"/>
+		<arg name="map_file" value="$(arg map_file_c)"/>
+ 		<arg name="launch_move_base" value="$(arg move_base_robot_c)"/>
+		<arg name="omni_drive" value="$(arg omni_drive)"/>
+		<arg name="ros_planar_move_plugin" value="$(arg ros_planar_move_plugin)"/>
+		<arg name="launch_pad" value="$(arg launch_pad_c)"/>
+    <arg name="launch_advanced_simulation" value="$(arg launch_advanced_simulation)"/>
+    <arg name="use_gpu_for_simulation" value="$(arg use_gpu_for_simulation)"/>
+	</include>
+
+</launch>

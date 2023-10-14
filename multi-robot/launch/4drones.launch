@@ -1,0 +1,51 @@
+<launch>
+
+<!-- World -->
+  <arg name="world_name" default="worlds/mars.world"/>
+
+	<include file="$(find gazebo_ros)/launch/empty_world.launch">
+		<arg name="world_name" value="$(find multi_robot)/$(arg world_name)"/> 
+		<arg name="paused" value="false"/>
+		<arg name="use_sim_time" value="true"/>
+		<arg name="gui" value="true"/>
+		<arg name="headless" value="false"/>
+		<arg name="debug" value="false"/>
+		<arg name="verbose" value="true" />
+	</include>
+
+<!-- drone1 -->
+	<group ns="drone1">
+		<include file="$(find hector_quadrotor_gazebo)/launch/spawn_quadrotor.launch">
+			<arg name="name" value="drone1" />
+			<arg name="tf_prefix" value="drone1" />
+			<arg name="y" value="-1.0" />
+		</include>
+	</group>
+
+<!-- drone2 -->
+	<group ns="drone2">
+		<include file="$(find hector_quadrotor_gazebo)/launch/spawn_quadrotor.launch">
+			<arg name="name" value="drone2" />
+			<arg name="tf_prefix" value="drone2" />
+			<arg name="y" value="2.0" />
+		</include>
+	</group>
+
+<!-- drone3 -->
+	<group ns="drone3">
+		<include file="$(find hector_quadrotor_gazebo)/launch/spawn_quadrotor.launch">
+			<arg name="name" value="drone3" />
+			<arg name="tf_prefix" value="drone3" />
+			<arg name="y" value="5.0" />
+		</include>
+	</group>
+
+<!-- drone4 -->
+	<group ns="drone4">
+		<include file="$(find hector_quadrotor_gazebo)/launch/spawn_quadrotor.launch">
+			<arg name="name" value="drone4" />
+			<arg name="tf_prefix" value="drone4" />
+			<arg name="x" value="2.0" />
+		</include>
+	</group>
+</launch>
